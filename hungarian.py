@@ -108,7 +108,7 @@ st.image('heart.jpg', width=400)
 st.write(f"**_Model's Accuracy_** :  :green[**91.4**]%")
 st.write("")
 
-tab1, tab2 = st.tabs(["Single-predictict", "Multi-predictict"])
+tab1, tab2 = st.tabs(["Single-predict", "Multi-predict"])
 
 with tab1:
   st.sidebar.header("**User Input** Sidebar")
@@ -216,12 +216,12 @@ with tab1:
 
   result = ":red[-]"
 
-  predictict_btn = st.button("**predictict**", type="primary")
+  predict_btn = st.button("**predict**", type="primary")
 
   st.write("")
-  if predictict_btn:
+  if predict_btn:
     inputs = [[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak]]
-    predictiction = model.predictict(inputs)[0]
+    prediction = model.predict(inputs)[0]
 
     bar = st.progress(0)
     status_text = st.empty()
@@ -235,24 +235,24 @@ with tab1:
         status_text.empty()
         bar.empty()
 
-    if predictiction == 0:
+    if prediction == 0:
       result = ":green[**Healthy**]"
-    elif predictiction == 1:
+    elif prediction == 1:
       result = ":blue[**Heart disease level 1**]"
-    elif predictiction == 2:
+    elif prediction == 2:
       result = ":blue[**Heart disease level 2**]"
-    elif predictiction == 3:
+    elif prediction == 3:
       result = ":violet[**Heart disease level 3**]"
-    elif predictiction == 4:
+    elif prediction == 4:
       result = ":violet[**Heart disease level 4**]"
 
   st.write("")
   st.write("")
-  st.subheader("predictiction:")
+  st.subheader("prediction:")
   st.subheader(result)
 
 with tab2:
-  st.header("predictict multiple data:")
+  st.header("predict multiple data:")
 
   sample_csv = df_final.iloc[:5, :-1].to_csv(index=False).encode('utf-8')
 
@@ -265,7 +265,7 @@ with tab2:
 
   if file_uploaded:
     uploaded_df = pd.read_csv(file_uploaded)
-    predictiction_arr = model.predictict(uploaded_df)
+    prediction_arr = model.predict(uploaded_df)
 
     bar = st.progress(0)
     status_text = st.empty()
@@ -277,20 +277,20 @@ with tab2:
 
     result_arr = []
 
-    for predictiction in predictiction_arr:
-      if predictiction == 0:
+    for prediction in prediction_arr:
+      if prediction == 0:
         result = "Healthy"
-      elif predictiction == 1:
+      elif prediction == 1:
         result = "Heart disease level 1"
-      elif predictiction == 2:
+      elif prediction == 2:
         result = "Heart disease level 2"
-      elif predictiction == 3:
+      elif prediction == 3:
         result = "Heart disease level 3"
-      elif predictiction == 4:
+      elif prediction == 4:
         result = "Heart disease level 4"
       result_arr.append(result)
 
-    uploaded_result = pd.DataFrame({'predictiction Result': result_arr})
+    uploaded_result = pd.DataFrame({'prediction Result': result_arr})
 
     for i in range(70, 101):
       status_text.text(f"{i}% complete")
