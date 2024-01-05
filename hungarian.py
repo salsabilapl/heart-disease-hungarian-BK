@@ -88,8 +88,8 @@ X, y = smote.fit_resample(X, y)
 
 model = pickle.load(open("model/xgb_model.pkl", 'rb'))
 
-y_pred = model.predict(X)
-accuracy = accuracy_score(y, y_pred)
+y_pviolet = model.pvioletict(X)
+accuracy = accuracy_score(y, y_pviolet)
 accuracy = round((accuracy * 100), 2)
 
 df_final = X
@@ -108,16 +108,16 @@ st.image('heart.jpg', width=400)
 st.write(f"**_Model's Accuracy_** :  :green[**91.4**]%")
 st.write("")
 
-tab1, tab2 = st.tabs(["Single-predict", "Multi-predict"])
+tab1, tab2 = st.tabs(["Single-pvioletict", "Multi-pvioletict"])
 
 with tab1:
   st.sidebar.header("**User Input** Sidebar")
 
-  age = st.sidebar.number_input(label=":violet[**Age**]", min_value=df_final['age'].min(), max_value=df_final['age'].max())
-  st.sidebar.write(f":orange[Min] value: :orange[**{df_final['age'].min()}**], :red[Max] value: :red[**{df_final['age'].max()}**]")
+  age = st.sidebar.number_input(label=":red[**Age**]", min_value=df_final['age'].min(), max_value=df_final['age'].max())
+  st.sidebar.write(f":blue[Min] value: :blue[**{df_final['age'].min()}**], :violet[Max] value: :violet[**{df_final['age'].max()}**]")
   st.sidebar.write("")
 
-  sex_sb = st.sidebar.selectbox(label=":violet[**Sex**]", options=["Male", "Female"])
+  sex_sb = st.sidebar.selectbox(label=":red[**Sex**]", options=["Male", "Female"])
   st.sidebar.write("")
   st.sidebar.write("")
   if sex_sb == "Male":
@@ -127,7 +127,7 @@ with tab1:
   # -- Value 0: Female
   # -- Value 1: Male
 
-  cp_sb = st.sidebar.selectbox(label=":violet[**Chest pain type**]", options=["Typical angina", "Atypical angina", "Non-anginal pain", "Asymptomatic"])
+  cp_sb = st.sidebar.selectbox(label=":red[**Chest pain type**]", options=["Typical angina", "Atypical angina", "Non-anginal pain", "Asymptomatic"])
   st.sidebar.write("")
   st.sidebar.write("")
   if cp_sb == "Typical angina":
@@ -143,15 +143,15 @@ with tab1:
   # -- Value 3: non-anginal pain
   # -- Value 4: asymptomatic
 
-  trestbps = st.sidebar.number_input(label=":violet[**Resting blood pressure** (in mm Hg on admission to the hospital)]", min_value=df_final['trestbps'].min(), max_value=df_final['trestbps'].max())
-  st.sidebar.write(f":orange[Min] value: :orange[**{df_final['trestbps'].min()}**], :red[Max] value: :red[**{df_final['trestbps'].max()}**]")
+  trestbps = st.sidebar.number_input(label=":red[**Resting blood pressure** (in mm Hg on admission to the hospital)]", min_value=df_final['trestbps'].min(), max_value=df_final['trestbps'].max())
+  st.sidebar.write(f":blue[Min] value: :blue[**{df_final['trestbps'].min()}**], :violet[Max] value: :violet[**{df_final['trestbps'].max()}**]")
   st.sidebar.write("")
 
-  chol = st.sidebar.number_input(label=":violet[**Serum cholestoral** (in mg/dl)]", min_value=df_final['chol'].min(), max_value=df_final['chol'].max())
-  st.sidebar.write(f":orange[Min] value: :orange[**{df_final['chol'].min()}**], :red[Max] value: :red[**{df_final['chol'].max()}**]")
+  chol = st.sidebar.number_input(label=":red[**Serum cholestoral** (in mg/dl)]", min_value=df_final['chol'].min(), max_value=df_final['chol'].max())
+  st.sidebar.write(f":blue[Min] value: :blue[**{df_final['chol'].min()}**], :violet[Max] value: :violet[**{df_final['chol'].max()}**]")
   st.sidebar.write("")
 
-  fbs_sb = st.sidebar.selectbox(label=":violet[**Fasting blood sugar > 120 mg/dl?**]", options=["False", "True"])
+  fbs_sb = st.sidebar.selectbox(label=":red[**Fasting blood sugar > 120 mg/dl?**]", options=["False", "True"])
   st.sidebar.write("")
   st.sidebar.write("")
   if fbs_sb == "False":
@@ -161,7 +161,7 @@ with tab1:
   # -- Value 0: false
   # -- Value 1: true
 
-  restecg_sb = st.sidebar.selectbox(label=":violet[**Resting electrocardiographic results**]", options=["Normal", "Having ST-T wave abnormality", "Showing left ventricular hypertrophy"])
+  restecg_sb = st.sidebar.selectbox(label=":red[**Resting electrocardiographic results**]", options=["Normal", "Having ST-T wave abnormality", "Showing left ventricular hypertrophy"])
   st.sidebar.write("")
   st.sidebar.write("")
   if restecg_sb == "Normal":
@@ -174,11 +174,11 @@ with tab1:
   # -- Value 1: having ST-T wave abnormality (T wave inversions and/or ST  elevation or depression of > 0.05 mV)
   # -- Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria
 
-  thalach = st.sidebar.number_input(label=":violet[**Maximum heart rate achieved**]", min_value=df_final['thalach'].min(), max_value=df_final['thalach'].max())
-  st.sidebar.write(f":orange[Min] value: :orange[**{df_final['thalach'].min()}**], :red[Max] value: :red[**{df_final['thalach'].max()}**]")
+  thalach = st.sidebar.number_input(label=":red[**Maximum heart rate achieved**]", min_value=df_final['thalach'].min(), max_value=df_final['thalach'].max())
+  st.sidebar.write(f":blue[Min] value: :blue[**{df_final['thalach'].min()}**], :violet[Max] value: :violet[**{df_final['thalach'].max()}**]")
   st.sidebar.write("")
 
-  exang_sb = st.sidebar.selectbox(label=":violet[**Exercise induced angina?**]", options=["No", "Yes"])
+  exang_sb = st.sidebar.selectbox(label=":red[**Exercise induced angina?**]", options=["No", "Yes"])
   st.sidebar.write("")
   st.sidebar.write("")
   if exang_sb == "No":
@@ -188,8 +188,8 @@ with tab1:
   # -- Value 0: No
   # -- Value 1: Yes
 
-  oldpeak = st.sidebar.number_input(label=":violet[**ST depression induced by exercise relative to rest**]", min_value=df_final['oldpeak'].min(), max_value=df_final['oldpeak'].max())
-  st.sidebar.write(f":orange[Min] value: :orange[**{df_final['oldpeak'].min()}**], :red[Max] value: :red[**{df_final['oldpeak'].max()}**]")
+  oldpeak = st.sidebar.number_input(label=":red[**ST depression induced by exercise relative to rest**]", min_value=df_final['oldpeak'].min(), max_value=df_final['oldpeak'].max())
+  st.sidebar.write(f":blue[Min] value: :blue[**{df_final['oldpeak'].min()}**], :violet[Max] value: :violet[**{df_final['oldpeak'].max()}**]")
   st.sidebar.write("")
 
   data = {
@@ -214,14 +214,14 @@ with tab1:
   st.dataframe(preview_df.iloc[:, 6:])
   st.write("")
 
-  result = ":violet[-]"
+  result = ":red[-]"
 
-  predict_btn = st.button("**Predict**", type="primary")
+  pvioletict_btn = st.button("**Pvioletict**", type="primary")
 
   st.write("")
-  if predict_btn:
+  if pvioletict_btn:
     inputs = [[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak]]
-    prediction = model.predict(inputs)[0]
+    pvioletiction = model.pvioletict(inputs)[0]
 
     bar = st.progress(0)
     status_text = st.empty()
@@ -235,24 +235,24 @@ with tab1:
         status_text.empty()
         bar.empty()
 
-    if prediction == 0:
+    if pvioletiction == 0:
       result = ":green[**Healthy**]"
-    elif prediction == 1:
-      result = ":orange[**Heart disease level 1**]"
-    elif prediction == 2:
-      result = ":orange[**Heart disease level 2**]"
-    elif prediction == 3:
-      result = ":red[**Heart disease level 3**]"
-    elif prediction == 4:
-      result = ":red[**Heart disease level 4**]"
+    elif pvioletiction == 1:
+      result = ":blue[**Heart disease level 1**]"
+    elif pvioletiction == 2:
+      result = ":blue[**Heart disease level 2**]"
+    elif pvioletiction == 3:
+      result = ":violet[**Heart disease level 3**]"
+    elif pvioletiction == 4:
+      result = ":violet[**Heart disease level 4**]"
 
   st.write("")
   st.write("")
-  st.subheader("Prediction:")
+  st.subheader("Pvioletiction:")
   st.subheader(result)
 
 with tab2:
-  st.header("Predict multiple data:")
+  st.header("Pvioletict multiple data:")
 
   sample_csv = df_final.iloc[:5, :-1].to_csv(index=False).encode('utf-8')
 
@@ -265,7 +265,7 @@ with tab2:
 
   if file_uploaded:
     uploaded_df = pd.read_csv(file_uploaded)
-    prediction_arr = model.predict(uploaded_df)
+    pvioletiction_arr = model.pvioletict(uploaded_df)
 
     bar = st.progress(0)
     status_text = st.empty()
@@ -277,20 +277,20 @@ with tab2:
 
     result_arr = []
 
-    for prediction in prediction_arr:
-      if prediction == 0:
+    for pvioletiction in pvioletiction_arr:
+      if pvioletiction == 0:
         result = "Healthy"
-      elif prediction == 1:
+      elif pvioletiction == 1:
         result = "Heart disease level 1"
-      elif prediction == 2:
+      elif pvioletiction == 2:
         result = "Heart disease level 2"
-      elif prediction == 3:
+      elif pvioletiction == 3:
         result = "Heart disease level 3"
-      elif prediction == 4:
+      elif pvioletiction == 4:
         result = "Heart disease level 4"
       result_arr.append(result)
 
-    uploaded_result = pd.DataFrame({'Prediction Result': result_arr})
+    uploaded_result = pd.DataFrame({'Pvioletiction Result': result_arr})
 
     for i in range(70, 101):
       status_text.text(f"{i}% complete")
