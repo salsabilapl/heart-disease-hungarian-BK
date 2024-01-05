@@ -88,7 +88,7 @@ X, y = smote.fit_resample(X, y)
 
 model = pickle.load(open("model/xgb_model.pkl", 'rb'))
 
-y_predict = model.predictict(X)
+y_predict = model.predict(X)
 accuracy = accuracy_score(y, y_predict)
 accuracy = round((accuracy * 100), 2)
 
