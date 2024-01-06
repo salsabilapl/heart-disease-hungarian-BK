@@ -6,7 +6,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.metrics import accuracy_score
 import streamlit as st
 import time
-import pickle
+import joblib
 
 # Membuka file data dan memasukkannya ke dalam list 'lines'
 with open("data/hungarian.data", encoding='Latin1') as file:
@@ -99,7 +99,8 @@ smote = SMOTE(random_state=42)
 X, y = smote.fit_resample(X, y)
 
 # Memuat model yang sudah dilatih sebelumnya menggunakan pickle
-model = pickle.load(open("model/xgb_model.pkl", 'rb'))
+#model = pickle.load(open("model/xgb_model_coba1.pkl", 'rb'))
+model = joblib.load("model/xgb_model_coba1.pkl")
 
 # Melakukan prediksi menggunakan model pada data yang telah diproses
 y_predict = model.predict(X)
